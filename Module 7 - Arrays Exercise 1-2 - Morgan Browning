@@ -1,0 +1,21 @@
+START
+    DECLARE numArray[20] AS INTEGER
+    DECLARE index AS INTEGER
+    DECLARE userInput AS INTEGER
+    DECLARE count AS INTEGER = 0
+
+    PRINT "Enter up to 20 numbers. Enter -1 to stop:"
+    WHILE count < 20
+        INPUT userInput
+        IF userInput = -1 THEN
+            BREAK
+        ENDIF
+        numArray[count] = userInput
+        count = count + 1
+    ENDWHILE
+
+    PRINT "Numbers in reverse order:"
+    FOR index = count - 1 TO 0 STEP -1
+        PRINT numArray[index]
+    ENDFOR
+STOP

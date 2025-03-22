@@ -1,0 +1,14 @@
+START
+    DECLARE numArray[20] AS INTEGER
+    DECLARE index AS INTEGER
+
+    FOR index = 0 TO 19
+        PRINT "Enter a number:"
+        INPUT numArray[index]
+    ENDFOR
+
+    PRINT "Numbers in reverse order:"
+    FOR index = 19 TO 0 STEP -1
+        PRINT numArray[index]
+    ENDFOR
+STOP

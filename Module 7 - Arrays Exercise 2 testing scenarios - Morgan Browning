@@ -1,0 +1,10 @@
+Testing Scenarios
+
+Scenario 1: Add "Whipped cream" and "Cinnamon".
+Total price: $2.00 + $0.89 + $0.25 = $3.14.
+Scenario 2: Add "Chocolate sauce" and "Irish whiskey".
+Total price: $2.00 + $0.59 + $1.75 = $4.34.
+Scenario 3: Enter an unavailable add-in like "Vanilla".
+Message: "Sorry, we do not carry that."
+Scenario 4: Enter "None" without selecting any add-ins.
+Total price: $2.00.

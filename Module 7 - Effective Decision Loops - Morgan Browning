@@ -1,0 +1,15 @@
+START
+SET total_sum TO 0
+PRINT "Enter numbers to calculate cumulative sum. Enter 0 to stop."
+
+WHILE TRUE
+    PRINT "Enter a number: "
+    GET number
+    IF number = 0 THEN
+        BREAK
+    ENDIF
+    SET total_sum TO total_sum + number
+ENDWHILE
+
+PRINT "The total sum is: " + total_sum
+END

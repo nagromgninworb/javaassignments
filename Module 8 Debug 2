@@ -1,0 +1,74 @@
+// Merging homeroom A and B fundraising files into one sorted file
+start
+   Declarations
+      string roomAName
+      num roomAValue
+      string roomBName
+      num roomBValue
+      string bothFilesDone = "N"
+      num HIGH_VALUE = -999999
+      InputFile roomAFile
+      InputFile roomBFile
+      OutputFile mergedFile
+
+   getReady()
+   while bothFilesDone = "N"
+      detailLoop()
+   endwhile
+   allDone()
+stop
+
+getReady()  
+   open roomAFile "roomAFile.dat"
+   open roomBFile "roomBFile.dat"
+   open mergedFile "mergedFile.dat"
+
+   readA()
+   readB()
+   checkBoth()
+return
+
+readA()
+   input roomAName, roomAValue from roomAFile
+   if eof(roomAFile) then
+      roomAValue = HIGH_VALUE
+   endif
+return
+
+readB()
+   input roomBName, roomBValue from roomBFile
+   if eof(roomBFile) then
+      roomBValue = HIGH_VALUE
+   endif
+return
+
+checkBoth()
+   if roomAValue = HIGH_VALUE AND roomBValue = HIGH_VALUE then
+      bothFilesDone = "Y"
+   endif
+return
+
+detailLoop()
+   if roomAValue >= roomBValue then
+      output roomAName, roomAValue to mergedFile
+      readA()
+   else
+      output roomBName, roomBValue to mergedFile
+      readB()
+   endif
+return
+
+allDone()
+   close roomAFile
+   close roomBFile
+   close mergedFile
+return
+
+CHANGES MADE:
+
+Changed mergedFile to an output file type.
+Fixed EOF checks using eof(roomAFile) and eof(roomBFile).
+Corrected mergeFile to mergedFile.
+Updated comparison logic to roomAValue >= roomBValue.
+Adjusted indentation for clarity.
+Set HIGH_VALUE to -999999 to indicate end of file.

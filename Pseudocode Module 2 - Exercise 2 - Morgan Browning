@@ -1,0 +1,26 @@
+START
+    // PLAN: Set up the program to calculate the monthly checking account fee
+
+    // HOUSEKEEPING: Initialize variables
+    SET accountBalance TO 0
+    SET overDrawnFee TO 0
+    SET feePercentage TO 0.01          // 1 percent fee for overdrawn balance
+    SET overdraftPenalty TO 5          // $5 penalty for each overdraft
+
+    PRINT "Let's begin by collecting your information."
+
+    // INPUT: Collect the account balance and number of overdrafts
+    PRINT "Please enter the current account balance:"
+    INPUT accountBalance
+    PRINT "Enter the number of times the account was overdrawn:"
+    INPUT numOverdrafts
+
+    // PROCESS: Calculate the fee and new account balance
+    CALCULATE overDrawnFee AS (accountBalance * feePercentage) + (numOverdrafts * overdraftPenalty)
+    CALCULATE finalBalance AS accountBalance - overDrawnFee
+
+    // OUTPUT: Display the calculated fee and new account balance
+    PRINT "The calculated fee is:", overDrawnFee
+    PRINT "The new account balance is:", finalBalance
+
+STOP

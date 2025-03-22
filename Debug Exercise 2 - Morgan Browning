@@ -1,0 +1,52 @@
+// This pseudocode is intended to display employee net pay values.
+// All employees have a standard $45 deduction from their checks.
+// If an employee does not earn enough to cover the deduction
+// an error message is displayed.
+START
+   // Declarations
+   string name
+   num hours
+   num rate
+   string DEDUCTION = 45
+   string EOFNAME = "ZZZ"
+   num gross
+   num net
+
+   // Prompt for first name
+   output "Enter first name or ", EOFNAME, " to quit"
+   input name
+
+   // Check if name is not EOFNAME
+   while name <> EOFNAME   // Changed "not equal to" to "<>"
+       output "Enter hours worked for ", name
+       input hours
+       output "Enter hourly rate for ", name
+       input rate
+
+       // Calculate gross and net pay
+       gross = hours * rate
+       net = gross - DEDUCTION
+
+       // Display net pay or error message
+       if net > 0 then
+           output "Net pay for ", name, " is ", net
+       else
+           output "Deductions not covered. Net is 0."
+       endif
+
+       // Prompt for next name
+       output "Enter next name or ", EOFNAME, " to quit"
+       input name
+   endwhile
+
+   // End of program message
+   output "End of job"
+STOP
+
+Here is a list of the changes I made: 
+
+Changed if name not equal to EOFNAME to while name <> EOFNAME: The condition should be part of a while loop to continue until the user enters the EOF name.
+Changed not equal to to <>: For clarity and consistency in pseudocode.
+Repositioned the while loop: The while loop was moved around the entire input section to handle multiple employees and terminate properly when EOFNAME is entered.
+Fixed the endwhile statement: Correct placement after the loop logic.
+Added endif after the if-else block to properly close the condition.

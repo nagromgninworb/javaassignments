@@ -1,0 +1,22 @@
+START
+PRINT "Welcome"
+PRINT "Host introduces the game"
+
+WHILE TRUE
+    PRINT "Question displayed to the player"
+    GET Player_Response
+
+    IF Player_Response IS Correct THEN
+        PRINT "Player score increases"
+        PRINT "Question removed from the board"
+    ELSE
+        PRINT "Player score decreases"
+    ENDIF
+
+    IF No_Remaining_Questions THEN
+        PRINT "Winner is the player with the highest score"
+        BREAK
+    ENDIF
+
+
+END

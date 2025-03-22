@@ -1,0 +1,57 @@
+//This pseudocode is intended to compute the number
+//of miles per gallon you get with your automobile
+
+start  // Beginning of program.
+
+   input milesTraveled  // The input indicates that we need to enter the data for the variable milesTraveled.
+
+   input gallonsOfGasUsed  // The input indicates that we need to enter the data for the variable gallonsOfGasUsed.
+
+   milesPerGallon = milesTraveled / gallonsOfGasUsed  // Calculate miles per gallon by dividing miles traveled by gallons of gas used.
+
+   output milesPerGallon  // Display the calculated miles per gallon.
+
+stop  // End of program.
+
+
+// This pseudocode is intended to describe
+// computing the daily cost of your rent
+// in a 30-day month
+
+start  // Beginning of program.
+
+   input monthlyRent  // The input indicates that we need to enter the data for the variable monthlyRent.
+
+   dailyCost = monthlyRent / 30  // Calculate daily cost by dividing monthly rent by 30 days.
+
+   output dailyCost  // Display the calculated daily cost of rent.
+
+stop  // End of program.
+
+
+// This program accepts a user's monthly pay
+// and rent, utilities, and grocery bills
+// and displays the amount available for discretionary spending
+// (which might be negative)
+// Your program should output the pay and the total bills
+// as well as the remaining discretionary amount
+
+start  // Beginning of program.
+
+   input monthlyPay  // The input indicates that we need to enter the data for the variable monthlyPay.
+
+   input rent  // The input indicates that we need to enter the data for the variable rent.
+
+   input utilities  // The input indicates that we need to enter the data for the variable utilities.
+
+   input groceries  // The input indicates that we need to enter the data for the variable groceries.
+
+   totalBills = rent + utilities + groceries  // Calculate total bills by summing rent, utilities, and grocery bills.
+
+   discretionaryAmount = monthlyPay - totalBills  // Calculate the amount available for discretionary spending.
+
+   output monthlyPay  // Display the monthly pay.
+   output totalBills  // Display the total bills.
+   output discretionaryAmount  // Display the remaining discretionary amount.
+
+stop  // End of program.

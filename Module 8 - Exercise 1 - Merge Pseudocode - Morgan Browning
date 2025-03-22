@@ -1,0 +1,39 @@
+START
+
+DECLARE InputFile GeraldsBusinesses
+DECLARE InputFile GeraldinesBusinesses
+DECLARE OutputFile UnifiedCustomerFile
+
+OPEN GeraldsBusinesses FOR READING
+OPEN GeraldinesBusinesses FOR READING
+OPEN UnifiedCustomerFile FOR WRITING
+
+DECLARE List GeraldRecords
+DECLARE List GeraldineRecords
+DECLARE List MergedRecords
+
+// Read data from input files
+READ GeraldsBusinesses INTO GeraldRecords
+READ GeraldinesBusinesses INTO GeraldineRecords
+
+// Combine records
+MERGE GeraldRecords AND GeraldineRecords INTO MergedRecords
+
+// Remove duplicates based on unique customer number
+REMOVE DUPLICATES FROM MergedRecords BY CustomerNumber
+
+// Sort merged records by customer number
+SORT MergedRecords BY CustomerNumber
+
+// Write unified records to the output file
+FOR EACH Record IN MergedRecords
+    WRITE Record TO UnifiedCustomerFile
+END FOR
+
+// Close all files
+CLOSE GeraldsBusinesses
+CLOSE GeraldinesBusinesses
+CLOSE UnifiedCustomerFile
+
+STOP
+

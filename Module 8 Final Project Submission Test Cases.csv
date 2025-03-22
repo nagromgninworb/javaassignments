@@ -1,0 +1,11 @@
+First_Name,Last_Name,Hourly_Rate,Hours_Worked,Dependents,Overtime_Hours,Expected_Gross_Pay,Expected_Pre_Tax,Expected_State_Tax,Expected_Fed_Tax,Expected_Net_Pay
+Alan,Wallace,15,40,0,,600,600,33.6,44.7456,521.6544
+Susan,White,15,38,0,,570,570,31.92,42.50832,495.57168
+Beth,Stevens,15,32,3,,480,405,22.68,30.20328,352.11672
+Marvin,Allen,15,45,2,5,787.5,737.5,41.3,54.9998,641.2002
+Jayden,Brooks,15,49,1,9,937.5,912.5,51.1,68.0506,793.3494
+ Bailey,Goodnight,15,55,5,15,1162.5,1037.5,58.1,77.3726,902.0274
+Morgan,Browning,15,40,4,,600,500,28,37.288,434.712
+Micah,Bauer,15,43,4,3,712.5,612.5,34.3,45.6778,532.5222
+Isaac,Becker,15,45,3,5,787.5,712.5,39.9,53.1354,619.4646
+Michael,Daigle,15,40,5,,600,475,26.6,35.4236,412.9764

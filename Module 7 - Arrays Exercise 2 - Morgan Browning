@@ -1,0 +1,32 @@
+START
+    DECLARE addIns[5] AS STRING = {"Whipped cream", "Cinnamon", "Chocolate sauce", "Amaretto", "Irish whiskey"}
+    DECLARE prices[5] AS REAL = {0.89, 0.25, 0.59, 1.50, 1.75}
+    DECLARE totalPrice AS REAL = 2.00  // Base price for coffee
+    DECLARE userChoice AS STRING
+    DECLARE found AS BOOLEAN
+    DECLARE index AS INTEGER
+
+    PRINT "Enter add-ins one by one. Enter 'None' to stop:"
+    WHILE TRUE
+        INPUT userChoice
+        IF userChoice = "None" THEN
+            BREAK
+        ENDIF
+
+        found = FALSE
+        FOR index = 0 TO 4
+            IF userChoice = addIns[index] THEN
+                totalPrice = totalPrice + prices[index]
+                PRINT userChoice & " added. Price: $" & prices[index]
+                found = TRUE
+                BREAK
+            ENDIF
+        ENDFOR
+
+        IF NOT found THEN
+            PRINT "Sorry, we do not carry that."
+        ENDIF
+    ENDWHILE
+
+    PRINT "Total order price: $" & totalPrice
+STOP

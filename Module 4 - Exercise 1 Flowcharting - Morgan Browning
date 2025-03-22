@@ -1,0 +1,15 @@
+START
+   SET secretNumber = 57  // The number to be guessed
+   SET guess = 0          // Initialize the guess variable
+   WHILE guess is not equal to secretNumber
+      PRINT "Enter your guess between 1 and 100:"
+      READ guess
+      IF guess > secretNumber THEN
+         PRINT "Your guess is too high"
+      ELSE IF guess < secretNumber THEN
+         PRINT "Your guess is too low"
+      ELSE
+         PRINT "You guessed the correct number"
+      ENDIF
+   ENDWHILE
+STOP

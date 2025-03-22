@@ -1,0 +1,74 @@
+// Merging new and used car sales files into one sorted file
+start
+   Declarations
+      string newSalesperson
+      num newAmount
+      string usedSalesperson
+      num usedAmount
+      string bothAtEof = "N"
+      string HIGH_NAME = "ZZZZZ"
+      InputFile newSales
+      InputFile usedSales
+      OutputFile allSales
+
+   getReady()
+   while bothAtEof = "N"
+      detailLoop()
+   endwhile
+   finish()
+stop
+
+getReady()
+   open newSales "NewSales.dat"
+   open usedSales "UsedSales.dat"
+   open allSales "AllSales.dat"
+
+   input newSalesperson, newAmount from newSales
+   if eof(newSales) then
+      newSalesperson = HIGH_NAME
+   endif
+
+   input usedSalesperson, usedAmount from usedSales
+   if eof(usedSales) then
+      usedSalesperson = HIGH_NAME
+   endif
+
+   if newSalesperson = HIGH_NAME AND usedSalesperson = HIGH_NAME then
+      bothAtEof = "Y"
+   endif
+return
+
+detailLoop()
+   if newSalesperson < usedSalesperson then
+      output newSalesperson, newAmount to allSales
+      input newSalesperson, newAmount from newSales
+      if eof(newSales) then
+         newSalesperson = HIGH_NAME
+      endif
+   else
+      output usedSalesperson, usedAmount to allSales
+      input usedSalesperson, usedAmount from usedSales
+      if eof(usedSales) then
+         usedSalesperson = HIGH_NAME
+      endif
+   endif
+
+   if newSalesperson = HIGH_NAME AND usedSalesperson = HIGH_NAME then
+      bothAtEof = "Y"
+   endif
+return
+
+finish()
+   close newSales
+   close usedSales
+   close allSales
+return
+
+CHANGES MADE:
+
+Fixed EOF checks using eof(newSales) and eof(usedSales).
+Corrected usedsalesPerson to usedSalesperson.
+Adjusted comparison logic to newSalesperson < usedSalesperson.
+Fixed inconsistent capitalization of bothAtEof.
+Improved indentation for readability.
+

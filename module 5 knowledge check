@@ -1,0 +1,35 @@
+START
+
+INPUT "Lower the pen to the paper."
+OUTPUT "Pen lowered to paper."
+LOWER PEN TO PAPER
+
+INPUT "Move the pen 1 inch in the current direction."
+OUTPUT "Pen moved 1 inch in the current direction."
+MOVE PEN 1 INCH IN CURRENT DIRECTION
+
+INPUT "Raise the pen."
+OUTPUT "Pen raised."
+RAISE PEN
+
+INPUT "Move the pen 1 inch in the current direction without drawing."
+OUTPUT "Pen moved 1 inch without drawing."
+MOVE PEN 1 INCH IN CURRENT DIRECTION WITHOUT DRAWING
+
+INPUT "Turn 90 degrees to the right."
+OUTPUT "Pen turned 90 degrees to the right."
+TURN 90 DEGREES TO THE RIGHT
+
+INPUT "Lower the pen to the paper to start drawing."
+OUTPUT "Pen lowered to paper to start drawing."
+LOWER PEN TO PAPER
+
+INPUT "Draw a 1-inch diameter circle clockwise."
+OUTPUT "1-inch diameter circle drawn clockwise."
+DRAW 1-INCH DIAMETER CIRCLE CLOCKWISE
+
+INPUT "Raise the pen from the paper."
+OUTPUT "Pen raised from paper."
+RAISE PEN FROM PAPER
+
+END

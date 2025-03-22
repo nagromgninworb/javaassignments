@@ -1,0 +1,11 @@
+Scenario 2: Collects Text Message Data Until Sentinel Value Is Entered (Displaying for Over 100 Messages Only)
+
+START
+    REPEAT
+        PRINT "Enter total number of text messages sent (enter -1 to stop):"
+        INPUT totalTextMessages
+        IF totalTextMessages > 100 THEN
+            PRINT "Total Text Messages Sent: ", totalTextMessages
+        END IF
+    UNTIL totalTextMessages = -1
+END

@@ -1,0 +1,51 @@
+START
+    // PLAN: Set up the program to calculate refrigerator capacity in cubic feet
+
+    // INPUT: Prompt user for refrigerator model and dimensions in inches
+    PRINT "Please enter the refrigerator model name:"
+    INPUT model_name
+    PRINT "Enter the interior height in inches:"
+    INPUT height_in_inches
+    PRINT "Enter the interior width in inches:"
+    INPUT width_in_inches
+    PRINT "Enter the interior depth in inches:"
+    INPUT depth_in_inches
+
+    // PROCESS: Calculate refrigerator capacity in cubic feet
+    SET CUBIC_INCHES_PER_CUBIC_FOOT TO 1728
+    CALCULATE cubic_inches AS height_in_inches * width_in_inches * depth_in_inches
+    CALCULATE capacity_cubic_feet AS cubic_inches / CUBIC_INCHES_PER_CUBIC_FOOT
+
+    // OUTPUT: Display the model name and capacity in cubic feet
+    PRINT "Refrigerator Model:", model_name
+    PRINT "Capacity in Cubic Feet:", capacity_cubic_feet
+
+STOP
+
+
+START
+    // PLAN: Set up the program to calculate the monthly checking account fee
+
+    // HOUSEKEEPING: Initialize variables
+    SET accountBalance TO 0
+    SET overDrawnFee TO 0
+    SET feePercentage TO 0.01          // 1 percent fee for overdrawn balance
+    SET overdraftPenalty TO 5          // $5 penalty for each overdraft
+
+    PRINT "Let's begin by collecting your information."
+
+    // INPUT: Collect the account balance and number of overdrafts
+    PRINT "Please enter the current account balance:"
+    INPUT accountBalance
+    PRINT "Enter the number of times the account was overdrawn:"
+    INPUT numOverdrafts
+
+    // PROCESS: Calculate the fee and new account balance
+    CALCULATE overDrawnFee AS (accountBalance * feePercentage) + (numOverdrafts * overdraftPenalty)
+    CALCULATE finalBalance AS accountBalance - overDrawnFee
+
+    // OUTPUT: Display the calculated fee and new account balance
+    PRINT "The calculated fee is:", overDrawnFee
+    PRINT "The new account balance is:", finalBalance
+
+STOP

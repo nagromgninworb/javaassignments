@@ -1,0 +1,97 @@
+START
+
+// Module 1: Data Entry and Validation
+DEFINE EMPLOYEE_DATA as an empty list
+DEFINE HOURLY_RATE_DATABASE as a lookup table for employee hourly rates
+
+FUNCTION DataEntry():
+    FOR employee IN range(1, 11):
+        PROMPT "Enter Employee First Name: "
+        READ first_name
+        PROMPT "Enter Employee Last Name: "
+        READ last_name
+        PROMPT "Enter Employee ID: "
+        READ employee_ID
+        PROMPT "Enter Number of Dependents: "
+        READ number_of_dependents
+        PROMPT "Enter Hours Worked: "
+        READ hours_worked
+
+        // Validate Inputs
+        IF hours_worked < 0 OR number_of_dependents < 0 THEN
+            DISPLAY "Invalid Input. Try Again."
+            RETURN DataEntry()
+        ENDIF
+
+        ADD {first_name, last_name, employee_ID, number_of_dependents, hours_worked} TO EMPLOYEE_DATA
+    ENDFUNCTION
+END FUNCTION
+
+CALL DataEntry()
+
+// Module 2: Payroll Calculation
+DEFINE PAYROLL_RECORD as an empty list
+
+FUNCTION CalculatePayroll():
+    FOR employee IN EMPLOYEE_DATA DO
+        SET employee_ID = employee.employee_ID
+        SET hours_worked = employee.hours_worked
+        SET number_of_dependents = employee.number_of_dependents
+
+        // Hourly Rate Lookup
+        SET hourly_rate = LOOKUP HOURLY_RATE_DATABASE USING employee_ID
+        IF hourly_rate IS NULL THEN
+            DISPLAY "Error: Invalid Employee ID. Skipping."
+            CONTINUE
+        ENDIF
+
+        // Gross Pay Calculation
+        IF hours_worked > 40 THEN
+            SET overtime_hours = hours_worked - 40
+            SET overtime_pay = overtime_hours * (hourly_rate * 1.5)
+            SET gross_pay = (40 * hourly_rate) + overtime_pay
+        ELSE
+            SET gross_pay = hours_worked * hourly_rate
+        ENDIF
+
+        // Deductions and Taxes
+        SET dependents_deduction = number_of_dependents * 25
+        SET pre_tax_amount = gross_pay - dependents_deduction
+        SET state_tax = pre_tax_amount * 0.056
+        SET federal_tax = pre_tax_amount * 0.079
+        SET post_tax_amount = pre_tax_amount - (state_tax + federal_tax)
+
+        ADD {employee_ID, gross_pay, pre_tax_amount, post_tax_amount, dependents_deduction, state_tax, federal_tax} TO PAYROLL_RECORD
+    ENDFOR
+END FUNCTION
+
+CALL CalculatePayroll()
+
+// Module 3: Output and Testing
+FUNCTION OutputResults():
+    DISPLAY "Employee Payroll Report"
+    FOR record IN PAYROLL_RECORD DO
+        DISPLAY "Employee ID: ", record.employee_ID
+        DISPLAY "Gross Pay: $", record.gross_pay
+        DISPLAY "Pre-Tax Amount: $", record.pre_tax_amount
+        DISPLAY "Post-Tax Amount: $", record.post_tax_amount
+        DISPLAY "Dependents Deduction: $", record.dependents_deduction
+        DISPLAY "State Tax: $", record.state_tax
+        DISPLAY "Federal Tax: $", record.federal_tax
+        DISPLAY "-----------------------------"
+    ENDFOR
+END FUNCTION
+
+CALL OutputResults()
+
+// Security and Validation Tests
+PERFORM security checks:
+    VERIFY all employee IDs are unique
+    FLAG hours_worked > 80 for review
+    LOG errors during hourly rate lookup
+
+CREATE 10 test cases with varying inputs:
+    INCLUDE edge cases like 0 hours, 100 hours, and invalid IDs
+    VALIDATE expected results against actual program output
+
+END

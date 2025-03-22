@@ -1,0 +1,17 @@
+START
+   SET targetWord = "logic"   // The word to look up
+   SET currentPage = middlePage()   // Start at the middle of the dictionary
+   SET guessWord = getWordAt(currentPage)  // Get the word on the current page
+   WHILE guessWord is not equal to targetWord
+      IF guessWord is before targetWord THEN
+         PRINT "Word is after this page."
+         SET currentPage = moveForward(currentPage)   // Move towards the later half of the dictionary
+      ELSE IF guessWord is after targetWord THEN
+         PRINT "Word is before this page."
+         SET currentPage = moveBackward(currentPage)  // Move towards the earlier half of the dictionary
+      ELSE
+         PRINT "Word found: ", targetWord  // Correct word found
+      ENDIF
+      SET guessWord = getWordAt(currentPage)  // Get the word on the updated page
+   ENDWHILE
+STOP

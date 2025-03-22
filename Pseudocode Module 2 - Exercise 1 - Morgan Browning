@@ -1,0 +1,25 @@
+START
+    // PLAN: Set up the program to calculate refrigerator capacity in cubic feet
+
+    // INPUT: Prompt user for refrigerator model and dimensions in inches
+    PRINT "Please enter the refrigerator model name:"
+    INPUT model_name
+    PRINT "Enter the interior height in inches:"
+    INPUT height_in_inches
+    PRINT "Enter the interior width in inches:"
+    INPUT width_in_inches
+    PRINT "Enter the interior depth in inches:"
+    INPUT depth_in_inches
+
+    // PROCESS: Calculate refrigerator capacity in cubic feet
+    SET CUBIC_INCHES_PER_CUBIC_FOOT TO 1728
+    CALCULATE cubic_inches AS height_in_inches * width_in_inches * depth_in_inches
+    CALCULATE capacity_cubic_feet AS cubic_inches / CUBIC_INCHES_PER_CUBIC_FOOT
+
+    // OUTPUT: Display the model name and capacity in cubic feet
+    PRINT "Refrigerator Model:", model_name
+    PRINT "Capacity in Cubic Feet:", capacity_cubic_feet
+
+STOP
+
+

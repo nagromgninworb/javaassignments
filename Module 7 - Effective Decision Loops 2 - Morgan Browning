@@ -1,0 +1,30 @@
+START
+PRINT "Enter the number of years until retirement: "
+GET years_until_retirement
+PRINT "Enter your annual savings amount: "
+GET annual_savings
+
+SET total_savings TO 0
+SET annual_interest_rate TO 0.03
+SET retirement_years TO 30
+SET annual_spending TO 60000
+
+FOR year FROM 1 TO years_until_retirement
+    SET total_savings TO total_savings + annual_savings
+    SET total_savings TO total_savings + (total_savings * annual_interest_rate)
+ENDFOR
+
+PRINT "Savings at retirement: " + total_savings
+
+PRINT "Retirement savings schedule:"
+FOR year FROM 1 TO retirement_years
+    PRINT "Year " + year + ": $" + total_savings
+    SET total_savings TO total_savings - annual_spending
+    IF total_savings <= 0 THEN
+        PRINT "Balance reached $0 in year " + year
+        BREAK
+    ENDIF
+    SET total_savings TO total_savings + (total_savings * annual_interest_rate)
+ENDFOR
+
+END

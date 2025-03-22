@@ -1,0 +1,37 @@
+Scenario 1: Collects Customer Data and Displays Bill Before and After Tax
+
+START
+    SET totalTextMessages, areaCode, phoneNumber, billBeforeTax, billAfterTax
+    PRINT "Enter customer area code (3 digits):"
+    INPUT areaCode
+    PRINT "Enter customer phone number (7 digits):"
+    INPUT phoneNumber
+    PRINT "Enter total number of text messages sent:"
+    INPUT totalTextMessages
+
+    // Display Input Data
+    PRINT "Area Code: ", areaCode
+    PRINT "Phone Number: ", phoneNumber
+    PRINT "Total Text Messages Sent: ", totalTextMessages
+
+    // Calculate bill before tax
+    IF totalTextMessages <= 100 THEN
+        billBeforeTax = 5
+    ELSE IF totalTextMessages <= 300 THEN
+        billBeforeTax = 5 + ((totalTextMessages - 100) * 0.03)
+    ELSE
+        billBeforeTax = 5 + (200 * 0.03) + ((totalTextMessages - 300) * 0.02)
+    END IF
+
+    // Display bill before tax
+    PRINT "Bill before tax: $", billBeforeTax
+
+    // Calculate tax
+    tax = billBeforeTax * 0.14
+
+    // Calculate bill after tax
+    billAfterTax = billBeforeTax + tax
+
+    // Display bill after tax
+    PRINT "Bill after tax: $", billAfterTax
+END

@@ -1,0 +1,27 @@
+Scenario 3: Collects Text Message Data Until Sentinel Value Is Entered (Displaying Only Bills Over $10 After Tax)
+
+START
+    REPEAT
+        PRINT "Enter total number of text messages sent (enter -1 to stop):"
+        INPUT totalTextMessages
+
+        // Calculate bill before tax
+        IF totalTextMessages <= 100 THEN
+            billBeforeTax = 5
+        ELSE IF totalTextMessages <= 300 THEN
+            billBeforeTax = 5 + ((totalTextMessages - 100) * 0.03)
+        ELSE
+            billBeforeTax = 5 + (200 * 0.03) + ((totalTextMessages - 300) * 0.02)
+        END IF
+
+        // Calculate tax and bill after tax
+        tax = billBeforeTax * 0.14
+        billAfterTax = billBeforeTax + tax
+
+        // Display if bill after tax exceeds $10
+        IF billAfterTax > 10 THEN
+            PRINT "Total Text Messages Sent: ", totalTextMessages
+            PRINT "Bill after tax: $", billAfterTax
+        END IF
+    UNTIL totalTextMessages = -1
+END

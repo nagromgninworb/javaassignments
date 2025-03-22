@@ -1,0 +1,45 @@
+START
+    DECLARE SIZE = 10
+    DECLARE MAX = 6
+    DECLARE scores[SIZE]
+    DECLARE name AS STRING
+    DECLARE total = 0
+    DECLARE x, y, temp AS NUMBERS
+    
+    CALL fillArray(scores, name)
+    CALL sortArray(scores)
+    CALL displayTotal(scores, name, total)
+STOP
+
+PROCEDURE fillArray(scores, name)
+    PRINT "Enter student's name:"
+    INPUT name
+    PRINT "Enter 10 quiz scores:"
+    FOR x FROM 0 TO SIZE - 1 DO
+        INPUT scores[x]
+    END FOR
+END PROCEDURE
+
+PROCEDURE sortArray(scores)
+    FOR x FROM 0 TO SIZE - 1 DO
+        FOR y FROM 0 TO SIZE - x - 2 DO
+            IF scores[y] > scores[y + 1] THEN
+                CALL swap(scores, y, y + 1)
+            END IF
+        END FOR
+    END FOR
+END PROCEDURE
+
+PROCEDURE swap(scores, x, y)
+    SET temp = scores[x]
+    SET scores[x] = scores[y]
+    SET scores[y] = temp
+END PROCEDURE
+
+PROCEDURE displayTotal(scores, name, total)
+    FOR x FROM SIZE - MAX TO SIZE - 1 DO
+        SET total = total + scores[x]
+    END FOR
+    PRINT "Student Name: " + name
+    PRINT "Total of 6 highest scores: " + total
+END PROCEDURE
